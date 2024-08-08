@@ -24,7 +24,6 @@ impl SvgDrawing {
     }
 
     pub fn svg_header(&self) -> String {
-        let w = self.width;
         format!(r#"<svg width="{}" height="{}" xmlns="http://www.w3.org/2000/svg">"#, self.width, self.height).to_string()
     }
 }

@@ -1,4 +1,3 @@
-use std::fmt;
 
 pub fn rgb_to_hex(r: u16, g: u16, b: u16) -> String {
     format!("#{:02X}{:02X}{:02X}", r, g, b)

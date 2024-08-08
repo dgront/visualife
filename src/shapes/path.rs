@@ -1,5 +1,4 @@
 use crate::draw_svg::ToSvg;
-use crate::shapes::Circle;
 use crate::style::Style;
 
 #[derive(Debug, Clone)]
