@@ -1,4 +1,4 @@
-use crate::draw_svg::ToSvg;
+use crate::draw_svg::{close_element, ToSvg};
 use crate::style::Style;
 
 #[derive(Debug, Clone)]
@@ -16,19 +16,14 @@ impl Circle {
     }
 }
 
+
 impl ToSvg for Circle {
     fn to_svg(&self) -> String {
         let mut svg_string = format!(
             r#"<circle id="{}" cx="{}" cy="{}" r="{}""#,
             self.id, self.cx, self.cy, self.radius
         );
-
-        let style_string = self.style.to_string();
-        if !style_string.is_empty() {
-            svg_string.push_str(&format!(r#" style="{}""#, style_string));
-        }
-
-        svg_string.push_str(r#" />"#);
+        close_element(&self.style, &mut svg_string);
 
         svg_string
     }

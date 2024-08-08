@@ -11,7 +11,6 @@ pub struct Style {
     pub opacity: Option<f32>,
     pub fill_opacity: Option<f32>,
     pub stroke_opacity: Option<f32>,
-    pub angle: f32,
 }
 
 impl Style {
@@ -23,7 +22,6 @@ impl Style {
             opacity: None,
             fill_opacity: None,
             stroke_opacity: None,
-            angle: 0.0,
         }
     }
 
@@ -51,8 +49,13 @@ impl Style {
         self.stroke_opacity = Some(stroke_opacity);
     }
 
-    pub fn set_angle(&mut self, angle_deg: f32) {
-        self.angle = angle_deg;
+    pub fn is_empty(&self) -> bool {
+            self.fill.is_none()
+            && self.stroke.is_none()
+            && self.stroke_width.is_none()
+            && self.opacity.is_none()
+            && self.fill_opacity.is_none()
+            && self.stroke_opacity.is_none()
     }
 
     pub fn to_string(&self) -> String {

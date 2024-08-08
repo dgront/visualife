@@ -17,7 +17,10 @@ mod test_elements {
 
     #[test]
     fn test_path() {
-        let p = Path::new("p1", "M 100 100 L 300 100 L 200 300 z".to_string());
+        let mut p = Path::new("p1", "M 100 100 L 300 100 L 200 300 z".to_string());
         assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 z" />"#);
+
+        p.style.set_stroke("#000000");
+        assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 z" style="stroke:#000000;" />"#);
     }
 }

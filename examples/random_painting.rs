@@ -36,7 +36,7 @@ fn main() {
                 let mut rect = Rect::new(&id, x, y, box_width, box_width);
                 rect.style = style;
                 let angle = rng.gen_range(0.0..=i as f32 * j as f32 * 60.0 / (n_x * n_y) as f32);
-                rect.style.set_angle(angle);
+                rect.angle = angle;
                 drawing.add_element(Box::new(rect));
                 // separated_approach.push(Box::new(rect));
             }
