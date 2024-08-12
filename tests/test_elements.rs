@@ -17,10 +17,27 @@ mod test_elements {
 
     #[test]
     fn test_path() {
-        let mut p = Path::new("p1", "M 100 100 L 300 100 L 200 300 z".to_string());
+        let mut p = Path::new("p1", "M 100 100 L 300 100 L 200 300 z");
         assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 z" />"#);
 
         p.style.set_stroke("#000000");
         assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 z" style="stroke:#000000;" />"#);
+    }
+
+    #[test]
+    fn test_group() {
+        use visualife::shapes::{Circle, Group};
+        use visualife::style::Style;
+        use visualife::ToSvg;
+        let mut g = Group::new("my_group");
+        g.add_element(Box::new(Circle::new("my_circle", 100.0, 50.0, 10.0)));
+        g.add_element(Box::new(Circle::new("my_circle", 100.0, 100.0, 10.0)));
+        let svg = g.to_svg();
+        let expected1 = r#"<g id="my_group">
+	<circle id="my_circle" cx="100" cy="50" r="10" />
+	<circle id="my_circle" cx="100" cy="100" r="10" />
+</g>"#;
+        assert_eq!(svg, expected1);
+        println!("{}", svg);
     }
 }

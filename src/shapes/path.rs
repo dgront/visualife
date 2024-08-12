@@ -9,8 +9,8 @@ pub struct Path {
 }
 
 impl Path {
-    pub fn new(id: &str, d: String) -> Self {
-        Path { id: id.to_string(), d, style: Style::new(), }
+    pub fn new(id: &str, d: &str) -> Self {
+        Path { id: id.to_string(), d: d.to_string(), style: Style::new(), }
     }
 }
 
