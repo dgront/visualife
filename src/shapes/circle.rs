@@ -1,6 +1,7 @@
 use crate::draw_svg::{close_element, ToSvg};
 use crate::style::Style;
 
+/// A ``<circle>`` element
 #[derive(Debug, Clone)]
 pub struct Circle {
     pub id: String,

@@ -17,11 +17,14 @@ mod test_elements {
 
     #[test]
     fn test_path() {
-        let mut p = Path::new("p1", "M 100 100 L 300 100 L 200 300 z");
-        assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 z" />"#);
+        let mut p = Path::from_str("p1", "M 100 100 L 300 100 L 200 300 Z");
+        assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 Z " />"#);
 
         p.style.set_stroke("#000000");
-        assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 z" style="stroke:#000000;" />"#);
+        assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 Z " style="stroke:#000000;" />"#);
+
+        let p = Path::new("p1").move_to(100.0, 100.0).line_to(300.0, 100.0).line_to(200.0, 300.0).close();
+        assert_eq!(p.to_svg(), r#"<path id="p1" d="M 100 100 L 300 100 L 200 300 Z " />"#);
     }
 
     #[test]

@@ -3,6 +3,7 @@ use crate::draw_svg::{close_element, ToSvg};
 use crate::style::Style;
 
 
+/// A ``<rect>`` element
 #[derive(Debug, Clone)]
 pub struct Rect {
     pub id: String,
